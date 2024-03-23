@@ -28,3 +28,4 @@ C:\Users\User\Desktop\2X94\TechStore\obj\Debug\net8.0\refint\TechStore.dll
 C:\Users\User\Desktop\2X94\TechStore\obj\Debug\net8.0\TechStore.pdb
 C:\Users\User\Desktop\2X94\TechStore\obj\Debug\net8.0\TechStore.genruntimeconfig.cache
 C:\Users\User\Desktop\2X94\TechStore\obj\Debug\net8.0\ref\TechStore.dll
+C:\Users\User\Desktop\2X94\TechStore\obj\Debug\net8.0\TechStore.sourcelink.json

@@ -32,14 +32,20 @@ namespace TechStore.Controllers
 
         private List<Producto> ObtenerProductos()
         {
-            List<Producto> listaProductos = new List<Producto>
-            {
-                new Producto { Id = 1, Nombre = "Producto 1", Descripcion = "Descripción del Producto 1", Precio = 100 },
-                new Producto { Id = 2, Nombre = "Producto 2", Descripcion = "Descripción del Producto 2", Precio = 200 },
-                new Producto { Id = 3, Nombre = "Producto 3", Descripcion = "Descripción del Producto 3", Precio = 150 }
-            };
+        List<Producto> listaProductos = new List<Producto>
+        {
+        new Producto { Id = 1, Nombre = "Producto 1", Descripcion = "Descripción del Producto 1", Precio = 100 },
+        new Producto { Id = 2, Nombre = "Producto 2", Descripcion = "Descripción del Producto 2", Precio = 200 },
+        new Producto { Id = 3, Nombre = "Producto 3", Descripcion = "Descripción del Producto 3", Precio = 150 }
+        };
 
-            return listaProductos;
+        // Calcular el IGV para cada producto en la lista
+        foreach (var producto in listaProductos)
+        {
+        producto.IGV = producto.Precio * 0.18m;
+        }
+
+        return listaProductos;
         }
     }
 }
