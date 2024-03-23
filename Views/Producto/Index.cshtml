@@ -1,0 +1,55 @@
+@model List<TechStore.Models.Producto>
+
+@{
+    ViewData["Title"] = "Lista de Producto";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <!-- Formulario para agregar un nuevo producto -->
+    <form asp-controller="Producto" asp-action="AgregarProducto" method="post">
+        <label>Nombre:</label>
+        <input type="text" name="Nombre" required><br>
+        <label>Descripción:</label>
+        <textarea name="Descripcion" required></textarea><br>
+        <label>Precio:</label>
+        <input type="number" name="Precio" step="0.01" required><br>
+        <!-- Mostrar el IGV calculado -->
+        <label>IGV:</label>
+        <span id="igvSpan"></span><br>
+        <input type="submit" value="Agregar Producto">
+    </form>
+</div>
+
+<hr>
+
+<!-- Mostrar la lista de productos existentes -->
+@if (Model != null && Model.Count > 0)
+{
+    <ul>
+        @foreach (var producto in Model)
+        {
+            <li>@producto.Nombre - Precio: $@producto.Precio - IGV: $@producto.IGV - Precio con IGV: $@producto.PrecioConIGV</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No hay productos disponibles.</p>
+}
+
+@section Scripts {
+    <script>
+        // Función para calcular y mostrar el IGV al ingresar el precio
+        document.querySelector('input[name="Precio"]').addEventListener('input', function() {
+            var precio = parseFloat(this.value);
+            if (!isNaN(precio)) {
+                var igv = precio * 0.18;
+                document.getElementById('igvSpan').textContent = '$' + igv.toFixed(2);
+            } else {
+                document.getElementById('igvSpan').textContent = '';
+            }
+        });
+    </script>
+}
